@@ -27,7 +27,7 @@ HELPABLE = {}
 
 async def initiate_bot():
     with console.status(
-        "[magenta] Booting up The Yukki Music Bot...",
+        "[magenta] Booting up The Arc Music Bot...",
     ) as status:
         console.print("┌ [red]Clearing MongoDB cache...")
         try:
@@ -78,7 +78,7 @@ async def initiate_bot():
         await asyncio.sleep(2.4)
         await startup_delete_last(_____)
     console.print(
-        "[bold green]Congrats!! arc Music Bot has started successfully!\n"
+        "[bold green]Congrats!! Arc Music Bot has started successfully!\n"
     )
     try:
         await app.send_message(
@@ -122,6 +122,7 @@ async def initiate_bot():
 home_text_pm = f"""Hello ,
 My name is {BOT_NAME}.
 I'm Telegram Voice Chat Audio with some useful features.
+
 All commands can be used with: / """
 
 
@@ -177,13 +178,16 @@ async def start_command(_, message):
                 published = result["publishedTime"]
             searched_text = f"""
 🔍__**Video Track Information**__
+
 ❇️**Title:** {title}
+
 ⏳**Duration:** {duration} Mins
 👀**Views:** `{views}`
 ⏰**Published Time:** {published}
 🎥**Channel Name:** {channel}
 📎**Channel Link:** [Visit From Here]({channellink})
 🔗**Video Link:** [Link]({link})
+
 ⚡️ __Searched Powered By {BOT_NAME}t__"""
             key = InlineKeyboardMarkup(
                 [
@@ -217,7 +221,9 @@ async def help_parser(name, keyboard=None):
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
     return (
         """Hello {first_name},
+
 Click on the buttons for more information.
+
 All commands can be used with: /
 """.format(
             first_name=name
@@ -226,7 +232,7 @@ All commands can be used with: /
     )
 
 
-@app.on_callback_query(filters.regex("xender"))
+@app.on_callback_query(filters.regex("shikhar"))
 async def shikhar(_, CallbackQuery):
     text, keyboard = await help_parser(CallbackQuery.from_user.mention)
     await CallbackQuery.message.edit(text, reply_markup=keyboard)
@@ -241,7 +247,9 @@ async def help_button(client, query):
     back_match = re.match(r"help_back", query.data)
     create_match = re.match(r"help_create", query.data)
     top_text = f"""Hello {query.from_user.first_name},
+
 Click on the buttons for more information.
+
 All commands can be used with: /
  """
     if mod_match:
@@ -320,15 +328,3 @@ All commands can be used with: /
 
 if __name__ == "__main__":
     loop.run_until_complete(initiate_bot())
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
